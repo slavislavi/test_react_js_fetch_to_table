@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { UserList } from "./UserList";
 
-function App() {
+export const App = () => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const url = "https://jsonplaceholder.typicode.com/users";
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data);
+        setLoading(false);
+      });
+  }, []);
+
+  const deleteRow = (id) => {
+    setUsers([...users].filter((user) => user.id !== id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h3 className="appTitle">User table</h3>
+      {!loading ? <UserList data={users} onDelete={deleteRow} /> : "Loading..."}
     </div>
   );
-}
-
-export default App;
+};
