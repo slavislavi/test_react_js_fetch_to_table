@@ -5,7 +5,7 @@ export const UserItem = ({
   onDelete,
 }) => {
   return (
-    <tr key={id} className="row">
+    <tr className="row">
       <td>{name}</td>
       <td>{username}</td>
       <td>{email}</td>
