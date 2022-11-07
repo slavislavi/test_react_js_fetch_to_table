@@ -4,6 +4,8 @@ export const UserItem = ({
   userData: { id, name, username, email, address, company, website },
   onDelete,
 }) => {
+  const onDeleteClick = () => onDelete(id);
+
   return (
     <tr className="row">
       <td>{name}</td>
@@ -17,7 +19,7 @@ export const UserItem = ({
         </a>
       </td>
       <td>
-        <button className="delete" onClick={() => onDelete(id)}>
+        <button className="delete" onClick={onDeleteClick}>
           ✗
         </button>
       </td>
