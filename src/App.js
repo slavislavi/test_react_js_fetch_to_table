@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { UserList } from "./UserList";
 
+const URL = "https://jsonplaceholder.typicode.com/users";
+
 export const App = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const url = "https://jsonplaceholder.typicode.com/users";
-
   useEffect(() => {
     setLoading(true);
-    fetch(url)
+    fetch(URL)
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
@@ -18,7 +18,7 @@ export const App = () => {
   }, []);
 
   const deleteRow = (id) => {
-    setUsers([...users].filter((user) => user.id !== id));
+    setUsers(users.filter((user) => user.id !== id));
   };
 
   return (

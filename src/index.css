@@ -24,25 +24,24 @@ code {
   text-transform: uppercase;
 }
 
+.table {
+  width: 100%;
+}
+
 table th {
   text-align: left;
   padding: 8px;
 }
 
 td,
-th,
-tr {
+th {
   padding: 8px;
   border: 1px solid rgb(190, 190, 190);
   background-color: #f0ffff;
 }
 
-.row td:hover {
-  background-color: #e5f4f4;
-}
-
-.table {
-  width: 100%;
+td:hover {
+  background-color: lightcyan;
 }
 
 .delete {
